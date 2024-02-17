@@ -1,0 +1,124 @@
+{
+    "logging": {
+      "level": "info",
+      "enableConsoleLog": true,
+      "enableConsoleColors": true,
+      "logFile": "",
+      "apiLogFile": "",
+      "logBaseDirectory": "",
+      "perPoolLogFile": true
+    },
+    "banning": {
+      "manager": "Integrated",
+      "banOnJunkReceive": true,
+      "banOnInvalidShares": true,
+      "banOnLoginFailure": true
+    },
+    "notifications": {
+      "enabled": false,
+      "email": {
+        "host": "smtp.example.com",
+        "port": 465,
+        "user": "user",
+        "password": "password",
+        "fromAddress": "info@yourpool.org",
+        "fromName": "pool support"
+      },
+      "admin": {
+        "enabled": true,
+        "emailAddress": "admin@yourpool.org",
+        "notifyBlockFound": false
+      }
+    },
+    "persistence": {
+      "postgres": {
+        "host": "localhost",
+        "port": 5432,
+        "user": "miningcore",
+        "password": "16102008Dd$",
+        "database": "miningcore"
+      }
+    },
+    "paymentProcessing": {
+      "enabled": true,
+      "interval": 100
+    },
+    "shareRecoveryFile": "/app/recovered-shares.txt",
+    "api": {
+      "enabled": true,
+      "listenAddress": "0.0.0.0",
+      "port": 1610,
+      "metricsIpWhitelist": ["127.0.0.1"],
+      "adminIpWhitelist": ["127.0.0.1"],
+      "rateLimiting": {
+        "disabled": false,
+        "rules": [
+          {
+            "Endpoint": "*",
+            "Period": "1s",
+            "Limit": 500
+          }
+        ],
+        "ipWhitelist": ["127.0.0.1"]
+      }
+    },
+    "nicehashClusterConfig": {
+      "enableAutoDiff": true
+    },
+    "clusterName": "name_1",
+    "pools": [
+      {
+        "id": "vish",
+        "enabled": true,
+        "coin": "vishai",
+        "address": "urqANVTL8hGhCpEJV24p4a7ZkJtUFtxtXu",
+        "rewardRecipients": [
+          {
+            "type": "op",
+            "address": "urqANVTL8hGhCpEJV24p4a7ZkJtUFtxtXu",
+            "percentage": 0.5
+          }
+        ],
+        "blockRefreshInterval": 120,
+        "clientConnectionTimeout": 600,
+        "banning": {
+          "enabled": true,
+          "time": 600,
+          "invalidPercent": 50,
+          "checkThreshold": 50
+        },
+        "ports": {
+          "4600": {
+            "name": "notls",
+            "listenAddress": "*",
+            "difficulty": 0.3,
+            "varDiff": {
+                "minDiff": 0.3,
+                "maxDiff": null,
+                "targetTime": 15,
+                "retargetTime": 90,
+                "variancePercent": 30,
+                "maxDelta": 500
+            }
+          }
+        },
+        "daemons": [
+          {
+            "host": "127.0.0.1",
+            "port": 8016,
+            "user": "viahuser",
+            "password": "vishpassword"
+          }
+        ],
+        "paymentProcessing": {
+          "enabled": true,
+          "minimumPayment": 10,
+          "payoutScheme": "PPLNS",
+          "payoutSchemeConfig": {
+            "factor": 0.5
+          }
+        }
+      }
+    ]
+  }
+  
